@@ -28,18 +28,22 @@
 		}
 
 		// JavaScript functions to detect device type and communicate with Unity
-		function isMobile() {
+		function isMobile() 
+		{
 			var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 			return (/android|iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream);
 		}
 
-		function CheckDevice() {
+		function CheckDevice() 
+		{
 			var deviceType = isMobile() ? 'Mobile' : 'PC';
 			SendMessage('DeviceChecker', 'OnDeviceCheck', deviceType);
 		}
 
-		document.addEventListener('DOMContentLoaded', (event) => {
-			createUnityInstance(document.querySelector("#unity-canvas"), {
+		document.addEventListener('DOMContentLoaded', (event) => 
+		{
+			createUnityInstance(document.querySelector("#unity-canvas"), 
+			{
 				dataUrl: "Build/WebGL.data.unityweb",
 				frameworkUrl: "Build/WebGL.framework.js.unityweb",
 				codeUrl: "Build/WebGL.wasm.unityweb",
@@ -49,10 +53,9 @@
 				productVersion: "0.6",
 				// matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
 				// devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
-				onProgress: UnityProgress
-			}).then((unityInstance) => {
-				CheckDevice();
+				// onProgress: UnityProgress // Comment this line if UnityProgress is not defined
 			});
+		});
 	</script>
 </body>
 
